@@ -17,12 +17,12 @@ const FormValitation = () => {
             <Form >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={handleSubmitBtn} type="email" placeholder="Enter email" name='email' />
+                    <Form.Control onBlur={handleSubmitBtn} type="email" placeholder="Enter email" name='email' />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={handleSubmitBtn} type="password" placeholder="Password" name='password' />
+                    <Form.Control onBlur={handleSubmitBtn} type="password" placeholder="Password" name='password' />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
