@@ -7,9 +7,12 @@ import app from '../firebase/firebase.init';
 const auth = getAuth(app)
 const FormValitation = () => {
 
-    const [passwordErrod, setpasswordErrod] = useState('')
+    const [passwordErrod, setpasswordErrod] = useState('');
+    const [success, setSuccess] = useState(false)
 
     const handleSubmitBtn = event => {
+        setSuccess(false)
+
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
@@ -33,9 +36,12 @@ const FormValitation = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setSuccess(true)
+                form.reset('')
             })
             .catch(error => {
                 console.log('error', error);
+                setpasswordErrod(error.message)
             })
     }
 
@@ -52,6 +58,9 @@ const FormValitation = () => {
                     <Form.Control type="password" placeholder="Password" name='password' required />
                 </Form.Group>
                 <p className='text-danger'>{passwordErrod}</p>
+                {
+                    success && <p className='text-success'>Create Success User!!</p>
+                }
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
